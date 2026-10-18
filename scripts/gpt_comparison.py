@@ -263,7 +263,7 @@ def main():
 
     img = os.environ.get("NOVA_IMAGES_DIR", os.path.join(PAPER, "figures"))
     fig_gpt(M, CI, TASK, steps, os.path.join(img, "fig_gpt.pdf"))
-    fig_ladder(M, steps, fin, os.path.join(img, "fig_ladder.pdf"))
+    fig_ladder(M, steps, fin, os.path.join(img, "fig_ladder.pdf"), TASK)
     agreement(allit, steps, fin, mac, ND, os.path.join(img, "fig_agree.pdf"))
     with open(os.path.join(ND, "gpt_macros.tex"), "w") as fh:
         fh.write("\n".join(L) + "\n")
@@ -502,73 +502,126 @@ def fig_gpt(M, CI, TASK, steps, path):
     plt.close(fig)
 
 
-RUNGS = [("S1_Acc", "Independent\nquestions"), ("S2_Acc", "Conver-\nsation"), ("S3_Rel", "Evidence\nrelation"),
-         ("S3_State", "Hypothesis\nstate"), ("S3_Dec", "Final\ndecision")]
+RUNGS = [("S1_Acc", "Independent\nquestions", "SOne"), ("S2_Acc", "Conversation\nturns", "STwo"),
+         ("S3_Rel", "Evidence\nrelation", "Rel"), ("S3_State", "Hypothesis\nstate", "State"),
+         ("S3_Dec", "Final\ndecision", "Dec")]
 
 
-def fig_ladder(M, steps, fin, path):
-    """From answering questions to judging hypotheses: every system, five steps of increasing demand."""
+def fig_ladder(M, steps, fin, path, TASK):
+    """From answering questions to judging hypotheses: (a) accuracy at each stage for both families, with
+    the lead of the best GPT-6 setting over the best Nova workflow; (b) evidence-relation accuracy by the
+    reference relation, with the share read as contradicting; (c) final decisions against the reference."""
     plt = nr.setup_mpl()
-    from matplotlib.lines import Line2D
     from matplotlib.patches import Patch
-    fig = plt.figure(figsize=(6.5, 2.05))
-    gs = fig.add_gridspec(1, 3, width_ratios=[1.45, 0.95, 1.1], wspace=0.42)
-    ax = fig.add_subplot(gs[0])
+    from matplotlib.lines import Line2D
+    plt.rcParams["hatch.color"] = nr.SURFACE
+    plt.rcParams["hatch.linewidth"] = 0.6
+    CN, CG, CR, CX = nr.BLUE_RAMP[4], "#eb6834", nr.INK2, "#8c1d18"   # Nova, GPT-6, reference, misread
+    FS = 7.0
+    fig = plt.figure(figsize=(6.5, 1.95))
+    B, H = 0.27, 0.62                                  # no legend strip above the panels
+    POS = [[0.062, B, 0.405, H], [0.545, B, 0.185, H], [0.8, B, 0.195, H]]
+    fam = {"Nova": (NOVA, CN), "GPT-6": (GPT, CG)}
+
+    # (a) accuracy of every workflow and reasoning effort at each stage: Nova cluster left, GPT-6 cluster
+    # right, one marker per system, short bar = family mean; number = best GPT-6 minus best Nova workflow
+    MK = {"Nova Instant": "o", "Nova Thinking": "s", "Nova Deep Thinking": "D", "Nova Auto": "^",
+          "GPT-6 Instant": "o", "GPT-6 Medium": "s", "GPT-6 High": "D"}
+    LAB = {"Nova Instant": "Instant", "Nova Thinking": "Thinking", "Nova Deep Thinking": "Deep Thinking",
+           "Nova Auto": "Auto", "GPT-6 Instant": "Instant", "GPT-6 Medium": "Medium", "GPT-6 High": "High"}
+    ax = fig.add_axes(POS[0])
     x = np.arange(len(RUNGS))
-    for j, wf in enumerate(ALL):
-        y = [M.loc[wf, k] for k, _ in RUNGS]
-        ax.plot(x + (j - 3) * 0.035, y, color=nr.WF_COLOR[wf], ls="--" if wf in GPT else "-", lw=1.4,
-                marker="s" if wf in GPT else "o", ms=3.6, mec=nr.SURFACE, mew=0.6, zorder=3)
+    off = {w: -0.4 + 0.085 * i for i, w in enumerate(NOVA)}
+    off.update({w: 0.1 + 0.085 * i for i, w in enumerate(GPT)})
+    for i in range(len(RUNGS) - 1):
+        ax.axvline(i + 0.5, color=nr.INK2, lw=0.4, alpha=0.35, zorder=0)
+    for name, (wfs, col) in fam.items():
+        # continuous ribbon (range within the family) and a light mean line: flat across each cluster and
+        # straight between clusters, drawn behind the dots
+        lo, hi = min(off[w] for w in wfs) - 0.04, max(off[w] for w in wfs) + 0.04
+        v = np.array([[M.loc[wf, k] for k, _, _ in RUNGS] for wf in wfs])
+        xx = np.ravel([[i + lo, i + hi] for i in range(len(RUNGS))])
+        ax.fill_between(xx, np.repeat(v.min(0), 2) - 1.0, np.repeat(v.max(0), 2) + 1.0, color=col, alpha=0.14,
+                        lw=0, zorder=1)
+        ax.plot(xx, np.repeat(v.mean(0), 2), color=col, lw=1.0, alpha=0.55, zorder=2)
+        for wf in wfs:
+            ax.plot(x + off[wf], [M.loc[wf, k] for k, _, _ in RUNGS], ls="none", marker=MK[wf], ms=3.9,
+                    color=col, mec=nr.SURFACE, mew=0.5, zorder=3)
+    for i, (k, _, tk) in enumerate(RUNGS):
+        m, p = TASK[tk][1], TASK[tk][3]
+        d = m[GPT].max() - m[NOVA].max()
+        top = max(M.loc[wf, k] for wf in ALL)
+        ax.text(i, top + 3.0, f"{d:+.1f}".replace("-", "\u2212"), ha="center", va="bottom",
+                fontsize=6.6, color=nr.INK, fontweight="bold" if p < 0.05 else "normal", zorder=4,
+                bbox=dict(boxstyle="square,pad=0.08", fc=nr.SURFACE, ec="none", alpha=0.85))
     ax.set_xticks(x)
-    ax.set_xticklabels([lab for _, lab in RUNGS], fontsize=6.4)
-    ax.set_ylim(30, 100)
-    ax.set_ylabel("Accuracy (%)")
+    ax.set_xticklabels([lab for _, lab, _ in RUNGS], fontsize=6.8)
+    ax.set_xlim(-0.5, len(RUNGS) - 0.5)
+    ax.set_ylim(13, 108); ax.set_yticks([40, 60, 80, 100])
+    ax.set_ylabel("Accuracy (%)", fontsize=FS)
     ax.tick_params(axis="x", length=0)
+    ax.grid(False, axis="x")
     ax.set_title("(a) From questions to decisions", loc="left")
-    # (b) evidence relation by the reference relation, pooled within each system family
-    ax2 = fig.add_subplot(gs[1])
-    fam = {"Nova": NOVA, "GPT-6": GPT}
+    # two-row legend (filled column by column): Nova row, GPT-6 row
+    blank = Line2D([], [], ls="none", label=" ")
+    hN = [Line2D([], [], color=CN, marker=MK[w], ls="none", ms=3.9, label=LAB[w]) for w in NOVA]
+    hG = [Line2D([], [], color=CG, marker=MK[w], ls="none", ms=3.9, label=LAB[w]) for w in GPT] + [blank]
+    tN, tG = Line2D([], [], ls="none", label="Nova"), Line2D([], [], ls="none", label="GPT-6")
+    hl = [h_ for pair in zip([tN] + hN, [tG] + hG) for h_ in pair]
+    lg = ax.legend(handles=hl, loc="lower center", ncol=5, fontsize=6.4, frameon=False, handlelength=0.8,
+                   handletextpad=0.3, columnspacing=0.9, borderaxespad=0.1, labelspacing=0.25)
+    for txt in lg.get_texts()[:2]:
+        txt.set_fontweight("bold")
+    lg.get_texts()[0].set_color(CN); lg.get_texts()[1].set_color(CG)
+
+    # (b) evidence-relation accuracy by the reference relation; dark cap = share read as contradicting
+    ax2 = fig.add_axes(POS[1])
     rels = ["SUPPORTS", "QUALIFIES", "CONTRADICTS", "NEUTRAL"]
     w = 0.38
-    for j, (name, wfs) in enumerate(fam.items()):
+    for j, (name, (wfs, col)) in enumerate(fam.items()):
         st = steps[steps.Workflow.isin(wfs)]
-        r = nr.macro(st, "Relationship_Match", ["Expected_Relationship"])
-        v = [r.get(k, np.nan) for k in rels]
-        ax2.bar(np.arange(4) - w / 2 + j * w, v, width=w, color=nr.BLUE_RAMP[4] if j == 0 else "#e87ba4",
-                edgecolor=nr.SURFACE, linewidth=0.8, hatch=None if j == 0 else "////", zorder=2)
+        acc = nr.macro(st, "Relationship_Match", ["Expected_Relationship"])
+        ex = st.Expected_Relationship.astype(str).str.upper()
+        rd = st.Extracted_Relationship.astype(str).str.upper()
+        xs = np.arange(4) - w / 2 + j * w
+        v = np.array([acc.get(r, np.nan) for r in rels])
+        ax2.bar(xs, v, width=w, color=col, edgecolor=nr.SURFACE, linewidth=0.6, zorder=2)
+        mis = np.array([0 if r == "CONTRADICTS" else 100 * ((ex == r) & (rd == "CONTRADICTS")).sum() / (ex == r).sum()
+                        for r in rels])
+        ax2.bar(xs, mis, bottom=v, width=w, color=CX, edgecolor=nr.SURFACE, linewidth=0.6, hatch="////", zorder=2)
     ax2.set_xticks(np.arange(4))
-    ax2.set_xticklabels(["Supp.", "Qual.", "Contr.", "Neut."], fontsize=6.6)
-    ax2.set_ylim(0, 100)
-    ax2.set_ylabel("Relation accuracy (%)")
+    ax2.set_xticklabels(["Supports", "Qualifies", "Contradicts", "Neutral"], fontsize=FS, rotation=30,
+                        ha="right", rotation_mode="anchor")
+    ax2.set_ylim(0, 100); ax2.set_yticks([0, 25, 50, 75, 100])
+    ax2.set_ylabel("Steps (%)", fontsize=FS)
     ax2.tick_params(axis="x", length=0)
-    ax2.set_title("(b) By reference relation", loc="left")
-    # (c) final decisions chosen against the reference, mean per system in each family
-    ax3 = fig.add_subplot(gs[2])
+    ax2.set_title("(b) Evidence relation", loc="left")
+    h = [Patch(facecolor=CX, hatch="////", edgecolor=nr.SURFACE, label="Read as contradicting")]
+    ax2.legend(handles=h, loc="upper left", fontsize=6.4, frameon=False, handlelength=1.0, handleheight=0.8,
+               borderaxespad=0.05, borderpad=0.1)
+
+    # (c) final decisions chosen (mean per system in each family) against the reference decisions
+    ax3 = fig.add_axes(POS[2])
     decs = nr.DECISIONS
     ref = fin[fin.Workflow == ALL[0]].Expected_Decision.astype(str).str.upper().value_counts()
-    series = [("Reference", [ref.get(d, 0) for d in decs], nr.INK2, None)]
-    for j, (name, wfs) in enumerate(fam.items()):
+    series = [("Reference", [ref.get(d, 0) for d in decs], CR)]
+    for name, (wfs, col) in fam.items():
         f = fin[fin.Workflow.isin(wfs)].Extracted_Decision.astype(str).str.upper().value_counts()
-        series.append((name, [f.get(d, 0) / len(wfs) for d in decs],
-                       nr.BLUE_RAMP[4] if j == 0 else "#e87ba4", None if j == 0 else "////"))
+        series.append((name, [f.get(d, 0) / len(wfs) for d in decs], col))
     w = 0.27
-    for j, (name, v, c, h) in enumerate(series):
-        ax3.bar(np.arange(len(decs)) - w + j * w, v, width=w, color=c, edgecolor=nr.SURFACE, linewidth=0.8,
-                hatch=h, zorder=2)
+    for j, (name, v, c) in enumerate(series):
+        ax3.bar(np.arange(len(decs)) - w + j * w, v, width=w, color=c, edgecolor=nr.SURFACE, linewidth=0.6,
+                zorder=2, label=name)
     ax3.set_xticks(np.arange(len(decs)))
-    ax3.set_xticklabels(["Ret.", "Qual.", "Rev.", "Rej.", "Insuf."], fontsize=6.6)
-    ax3.set_ylabel("Decisions (of 30)")
+    ax3.set_xticklabels(["Retain", "Qualify", "Revise", "Reject", "Insufficient"], fontsize=FS, rotation=30,
+                        ha="right", rotation_mode="anchor")
+    ax3.set_ylabel("Decisions (of 30)", fontsize=FS)
     ax3.tick_params(axis="x", length=0)
     ax3.set_title("(c) Final decisions", loc="left")
-    plt.rcParams["hatch.color"] = nr.SURFACE
-    plt.rcParams["hatch.linewidth"] = 0.5
-    h = [Line2D([], [], color=nr.WF_COLOR[wf], ls="--" if wf in GPT else "-", marker="s" if wf in GPT else "o",
-                ms=3.6, lw=1.4, label=nr.WF_LABEL[wf]) for wf in ALL]
-    h += [Patch(facecolor=nr.INK2, label="Reference"), Patch(facecolor=nr.BLUE_RAMP[4], label="Nova (mean)"),
-          Patch(facecolor="#e87ba4", hatch="////", edgecolor=nr.SURFACE, label="GPT-6 (mean)")]
-    fig.legend(handles=h, loc="upper center", ncol=5, bbox_to_anchor=(0.5, 1.02), handlelength=1.8,
-               columnspacing=0.9, fontsize=6.5)
-    fig.subplots_adjust(left=0.07, right=0.995, bottom=0.215, top=0.665)
+    ax3.legend(loc="upper left", fontsize=6.4, frameon=False, handlelength=1.0, handleheight=0.7,
+               borderaxespad=0.1, labelspacing=0.2)
+    for a_ in (ax, ax2, ax3):
+        a_.tick_params(axis="y", labelsize=FS)
     fig.savefig(path)
     plt.close(fig)
 

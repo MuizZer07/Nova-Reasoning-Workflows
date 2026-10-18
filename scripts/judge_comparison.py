@@ -513,10 +513,12 @@ def fig_rq4(op, MET, eff, path):
     from matplotlib.colors import LinearSegmentedColormap
     from matplotlib.patches import Patch
     CJ, GJ = "#2a78d6", "#eb6834"
-    fig = plt.figure(figsize=(6.5, 2.05))
-    gs = fig.add_gridspec(1, 3, width_ratios=[0.95, 1.15, 1.0], wspace=0.95)
+    fig = plt.figure(figsize=(6.5, 1.76))
+    # explicit panel positions (figure fractions): left, bottom, width, height; height is unchanged
+    B, H = 0.334, 0.551                       # same panel height in inches as before; no top legend strip
+    POS = [[0.112, B, 0.235, H], [0.41, B, 0.29, H], [0.735, B, 0.255, H]]
     # (a) verdicts
-    ax = fig.add_subplot(gs[0])
+    ax = fig.add_axes(POS[0])
     # every open answer is shown, so the grid sums to the open-answer count in the text; a verdict
     # other than full/partial/mismatch (unparseable grade) is drawn as "unclear"
     cats = ["match", "partial", "mismatch", "unclear"]
@@ -540,7 +542,7 @@ def fig_rq4(op, MET, eff, path):
         s_.set_visible(False)
     ax.set_title("(a) Two graders, open answers", loc="left")
     # (b) suite score by workflow under each grader
-    ax3 = fig.add_subplot(gs[1])
+    ax3 = fig.add_axes(POS[1])
     MC, MG = MET[("C", "M")], MET[("G", "M")]
     CIc, CIg = MET[("C", "CI")]["Suite"], MET[("G", "CI")]["Suite"]
     xs = np.arange(len(WF))
@@ -556,22 +558,28 @@ def fig_rq4(op, MET, eff, path):
     ax3.tick_params(axis="x", length=0)
     ax3.set_title("(b) Suite score by grader", loc="left")
     # (c) paired effects of wording and model, robustness subset
-    ax2 = fig.add_subplot(gs[2])
-    rows = [("Rephrased, GLM", "RephGLM"), ("Rephrased, Haiku", "RephHaiku"),
-            ("Haiku $-$ GLM, orig.", "ModelOrig"), ("Haiku $-$ GLM, reph.", "ModelReph")]
+    ax2 = fig.add_axes(POS[2])
+    rows = [("Rephrased $-$ original, GLM", "RephGLM"), ("Rephrased $-$ original, Haiku", "RephHaiku"),
+            ("Haiku $-$ GLM, original", "ModelOrig"), ("Haiku $-$ GLM, rephrased", "ModelReph")]
     for i, (lab_, key) in enumerate(rows[::-1]):
         d, lo, hi, p, n = eff[key]
         ax2.errorbar(d, i, xerr=[[d - lo], [hi - d]], fmt="o", color=nr.INK, markersize=4,
                      elinewidth=1, capsize=2)
     ax2.axvline(0, color=nr.INK2, linewidth=0.8, linestyle=(0, (3, 2)))
-    ax2.set_yticks(range(len(rows)))
-    ax2.set_yticklabels([r_[0] for r_ in rows[::-1]], fontsize=6.6)
+    # row labels sit above each estimate, inside the panel, so the panel can use the full width
+    for i, (lab_, key) in enumerate(rows[::-1]):
+        ax2.text(0.02, i + 0.42, lab_, transform=ax2.get_yaxis_transform(), fontsize=6.3,
+                 color=nr.INK, ha="left", va="center")
+    ax2.set_yticks([]); ax2.set_ylim(-0.5, len(rows) - 0.3)
     ax2.set_xlabel("Difference in credit (pp)", fontsize=7)
     ax2.grid(True, axis="x"); ax2.grid(False, axis="y")
     ax2.set_title("(c) Wording and model", loc="left")
-    h = [Patch(facecolor=CJ, label="Graded by Claude Opus 5.5"), Patch(facecolor=GJ, label="Graded by GPT-6")]
-    fig.legend(handles=h, loc="upper center", ncol=2, bbox_to_anchor=(0.33, 1.0))
-    fig.subplots_adjust(left=0.1, right=0.985, bottom=0.287, top=0.761)
+    # the grader colours apply to panel (b) only, so the legend sits inside it, above the bars
+    h = [Patch(facecolor=CJ, label="Claude Opus 5.5"), Patch(facecolor=GJ, label="GPT-6")]
+    lg = ax3.legend(handles=h, loc="upper center", ncol=2, fontsize=6.6, frameon=True, framealpha=1,
+                    edgecolor="none", handlelength=1.1, handleheight=0.8, columnspacing=1.0,
+                    borderaxespad=0.15, borderpad=0.25)
+    lg.get_frame().set_facecolor(nr.SURFACE)
     fig.savefig(path)
     plt.close(fig)
 

@@ -95,10 +95,10 @@ reference answer, the system's answer, and its grades:
 
 ```bash
 python -m venv .venv && .venv/bin/pip install -r scripts/requirements.txt
-.venv/bin/python scripts/nova_results.py         # Nova run: Table 6 (Nova columns), Fig. 2, statistics
-.venv/bin/python scripts/gpt_comparison.py       # Nova vs GPT-6: Table 6, Fig. 3
+.venv/bin/python scripts/nova_results.py         # Nova run: Table 5 (Nova columns), Fig. 2, statistics
+.venv/bin/python scripts/gpt_comparison.py       # Nova vs GPT-6: Table 5, Fig. 3
 .venv/bin/python scripts/judge_comparison.py     # regrading check: Fig. 4
-.venv/bin/python scripts/robustness_results.py   # robustness subset: Table 7
+.venv/bin/python scripts/robustness_results.py   # robustness subset: Table 6
 .venv/bin/python scripts/main_patterns.py        # task-level analyses and reruns
 .venv/bin/python scripts/mixed_evidence.py       # mixed-evidence numbers quoted in RQ3 and RQ4
 .venv/bin/python scripts/overview_figure.py      # Fig. 1
@@ -114,8 +114,8 @@ macro-averaged over the six datasets.
 | Fig. 2 | `nova_results.py` | `figures/fig_cost.pdf` |
 | Fig. 3 | `gpt_comparison.py` | `figures/fig_ladder.pdf` |
 | Fig. 4 | `judge_comparison.py` | `figures/fig_rq4.pdf` |
-| Table 6 | `nova_results.py`, `gpt_comparison.py` | `tab_gpt.tex`, `results_macros.tex`, `gpt_macros.tex` |
-| Table 7 | `robustness_results.py` | `robust_macros.tex` |
+| Table 5 | `nova_results.py`, `gpt_comparison.py` | `tab_gpt.tex`, `results_macros.tex`, `gpt_macros.tex` |
+| Table 6 | `robustness_results.py` | `robust_macros.tex` |
 
 ## Supplementary Material
 

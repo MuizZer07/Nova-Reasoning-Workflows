@@ -695,15 +695,7 @@ def fig_cost(plt, M, CI, path):
     fig, axes = plt.subplots(1, 2, figsize=(6.5, 1.8), sharey=True)
     for ax, key, xl in ((axes[0], "TokensK", "Mean tokens per answer (thousands)"),
                         (axes[1], "Latency", "Mean response time per answer (s)")):
-        xs, ys = M[key].to_numpy(), M["Suite"].to_numpy()
-        # Pareto frontier: cheaper-or-equal and better-or-equal
-        order = np.argsort(xs)
-        best, front = -np.inf, []
-        for i in order:
-            if ys[i] > best:
-                front.append(i)
-                best = ys[i]
-        ax.plot(xs[front], ys[front], color=INK2, linewidth=0.9, linestyle=(0, (3, 2)), zorder=1)
+        xs = M[key].to_numpy()
         for wf in WF_ORDER:
             x, y = M.loc[wf, key], M.loc[wf, "Suite"]
             lo, hi = CI["Suite"].loc[wf, "lo"], CI["Suite"].loc[wf, "hi"]
