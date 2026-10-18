@@ -145,6 +145,16 @@ assembles the same prompts, the experiment-data tools over `data/input-datasets/
 in [`scripts/literature_engine/`](scripts/literature_engine), and sessions that keep every earlier turn
 as context. It is an illustrative sketch of the design; running it needs a model endpoint of your own.
 
+## Disclaimer
+
+The prompts, code, and source files in this repository were prepared for public release and kept
+generic. To protect ongoing and proprietary work, platform-specific names, internal identifiers and
+version labels, product-specific instructions, and features unrelated to this study were removed or
+replaced with neutral wording, and `scripts/nova_cli/` is a simplified illustration rather than the
+production system. These edits do not affect reproducibility: the benchmark items, reference
+annotations, model answers, grades, and scores are unchanged, and the scripts in `scripts/` reproduce
+every number, table, and figure of the paper from the released files.
+
 ## License
 
 Code (`scripts/`) is released under the [MIT License](LICENSE). The benchmark, results,
