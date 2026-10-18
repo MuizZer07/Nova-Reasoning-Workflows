@@ -630,10 +630,10 @@ def fig_interactive(plt, s2, M, path):
     t["group"] = t["group"].astype(str)
     fig, axes = plt.subplots(1, 2, figsize=(6.5, 2.45), gridspec_kw={"width_ratios": [1, 1.5]})
     _lines(axes[0], t, groups, [g.replace("-", "–") for g in groups], "Mean turn credit (%)")
-    axes[0].set_xlabel("Turn position in trajectory")
+    axes[0].set_xlabel("Turn position in conversation")
     axes[0].set_title("(a) Accuracy across the conversation", loc="left")
-    groups_b = ["Turn\naccuracy", "Challenge\nturns", "Consistency", "Revision", "Trajectory\npass"]
-    keys = ["S2_Acc", "S2_Chal", "S2_Cons", "S2_Rev", "S2_Pass"]
+    groups_b = ["Turn\naccuracy", "Challenge\nturns", "Fact\npreservation", "Revision"]
+    keys = ["S2_Acc", "S2_Chal", "S2_Cons", "S2_Rev"]
     _bars(axes[1], groups_b, {g: M[k].to_dict() for g, k in zip(groups_b, keys)},
           ylabel="Rate (%)", labels=True)
     axes[1].set_title("(b) Interactive-setting criteria", loc="left")

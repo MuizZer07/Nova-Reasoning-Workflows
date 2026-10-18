@@ -40,6 +40,7 @@ scripts/                     analysis code that recomputes every number, table, 
   literature_engine/         the PubMed literature engine: hybrid lexical (BM25) + semantic retrieval
   nova_cli/                  an illustrative command-line chat with the four workflows and sessions
 figures/                     figures produced by the scripts (Figs. 1-4 of the paper and supplementary figures)
+supplementary/supplementary_material.pdf   the paper's Supplementary Material (Tables S1-S12, Figs. S1-S7)
 docs/workflow_specification.md   specification of the four Nova workflows
 ```
 
@@ -115,6 +116,31 @@ macro-averaged over the six datasets.
 | Fig. 4 | `judge_comparison.py` | `figures/fig_rq4.pdf` |
 | Table 6 | `nova_results.py`, `gpt_comparison.py` | `tab_gpt.tex`, `results_macros.tex`, `gpt_macros.tex` |
 | Table 7 | `robustness_results.py` | `robust_macros.tex` |
+
+## Supplementary Material
+
+[`supplementary/supplementary_material.pdf`](supplementary/supplementary_material.pdf) supports the paper's
+statements with the underlying tables, figures, and benchmark examples. Every item comes from the files
+and scripts in this repository:
+
+| Item | Content | Source |
+|---|---|---|
+| Table S1 | iPathwayGuide summary of the six datasets | `data/input-datasets/ipathwayguide_results/*/experiment_info.tsv` |
+| Tables S2-S4 | One benchmark item per setting with its reference annotations (NOVA-S1-D1-033, NOVA-S2-D1-T03, NOVA-S3-D1-H02), with the states declared by the systems | `data/benchmark/`, `data/results/nova_run/`, `data/results/gpt6_run/` |
+| Table S5 | Qualifying evidence read as contradicting (NOVA-S3-D2-H03-S04, NOVA-S3-D4-H03-S03) | `data/benchmark/S3_hypothesis_evaluation.xlsx`, `data/results/` |
+| Fig. S1 | Excerpt of the shared Nova system prompt | `prompts/nova_*/_system_prompt_build.md` |
+| Table S6 | Paired workflow comparisons in credit | `scripts/nova_results.py` (`tab_pairwise.tex`) |
+| Table S7 | Paired comparisons in strict accuracy and reference-based grades | `scripts/supplement_tables.py` |
+| Table S8 | Credit by item type with Friedman tests | `scripts/main_patterns.py` (`tab_main_patterns.tex`) |
+| Fig. S2 | Credit by Reasoning Requirement Level and difficulty | `scripts/nova_results.py` (`figures/fig_rrl.pdf`) |
+| Table S9, Fig. S3 | Item-level agreement between Nova-Thinking and GPT-6 Medium | `scripts/gpt_comparison.py` (`tab_agree.tex`, `figures/fig_agree.pdf`) |
+| Fig. S4 | Conversations: credit by turn position, fact preservation, revision | `scripts/nova_results.py` (`figures/fig_interactive.pdf`) |
+| Fig. S5 | Suite score by dataset and workflow | `scripts/nova_results.py` (`figures/fig_datasets.pdf`) |
+| Tables S10-S12 | Results under each grader, grader agreement, reference-based vs. reference-free grading | `scripts/judge_comparison.py` (`tab_judges.tex`, `tab_judge_agree.tex`, `tab_paths.tex`) |
+| Fig. S6 | Robustness subset by setting, model, and wording | `scripts/robustness_results.py` (`figures/fig_robust.pdf`) |
+| Fig. S7 | Worked example (NOVA-S1-D1-033 on the robustness subset) | `data/results/robustness_subset/D1/15%_glm_original.xlsx` |
+
+Tables are written to `$NOVA_NUMBERS_DIR` by the listed scripts.
 
 ## Reproducing the GPT-6 run and the regrading check
 

@@ -421,7 +421,7 @@ def fig_agree(FIG, path):
     colors = {"Both full credit": "#1baf7a", "Same partial or no credit": "#c3c2b7",
               "GPT-6 higher": "#4a3aa7", "Nova higher": "#eb6834"}
     panels = [("(a) Setting", ["Single-turn questions", "Conversation turns", "Hypothesis items"],
-               ["Single-\nturn", "Conver-\nsation", "Hypo-\nthesis"]),
+               ["Inde-\npendent", "Conver-\nsation", "Hypo-\nthesis"]),
               ("(b) Reasoning Requirement Level", ["L0", "L1", "L2", "L3", "L4"], ["L0", "L1", "L2", "L3", "L4"]),
               ("(c) Question form or turn type", ["Closed-form", "Short answer", "Evidence integration",
                                                  "Mechanistic interpretation", "Challenge turns", "Final decisions"],

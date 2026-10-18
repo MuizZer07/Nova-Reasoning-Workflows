@@ -471,7 +471,7 @@ def main():
     plt = nr.setup_mpl()
     fig = plt.figure(figsize=(6.5, 2.55))
     gs = fig.add_gridspec(1, 3, width_ratios=[1, 1, 0.95], wspace=0.3)
-    settings = [("S1", "Single-\nturn"), ("S2", "Conver-\nsation"), ("S3", "Hypo-\nthesis")]
+    settings = [("S1", "Inde-\npendent"), ("S2", "Conver-\nsation"), ("S3", "Hypo-\nthesis")]
     for k, (model, runs) in enumerate((("GLM-5.2", ("R1", "R2")), ("Haiku 4.5", ("R3", "R4")))):
         ax = fig.add_subplot(gs[k])
         it = pd.concat([R[r]["items"] for r in runs])
