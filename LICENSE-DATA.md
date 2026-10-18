@@ -1,6 +1,6 @@
 # Data license
 
-The benchmark, results, figures, and documentation in `data/`, `figures/`, and `docs/`
+The benchmark, results, figures, prompts, and documentation in `data/`, `figures/`, `prompts/`, and `docs/`
 are licensed under the Creative Commons Attribution 4.0 International License
 (CC BY 4.0): https://creativecommons.org/licenses/by/4.0/
 

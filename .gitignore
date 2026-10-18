@@ -7,3 +7,5 @@ numbers/
 # this repository publishes Markdown docs and PDF figures (overrides global excludes)
 !*.md
 !*.pdf
+scripts/nova_cli/sessions/
+scripts/literature_engine/data/

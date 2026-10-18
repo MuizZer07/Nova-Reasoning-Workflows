@@ -60,7 +60,7 @@ Return it together with pass 1's sheet; the two are merged by Row_ID.
 
 ---
 
-## Appendix C — SonicChat judge `sonic_chat_flash@0.1` (system prompt, verbatim)
+## Appendix C — SonicChat judge (system prompt, verbatim)
 
 You are Sonic Chat, a fast grader for a single question-and-answer turn produced by the
 bioinformatics chatbot. You grade ONE turn at a time: the user's question and the

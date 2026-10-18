@@ -32,7 +32,13 @@ data/
                              workbook, and the iPathwayGuide result tables (data/*.tsv)
   regrading_packages/D1-D6/  the regrading check: the Nova-run answers with the reference-grader and
                              SonicChat-judge prompts, grading sheets, and the iPathwayGuide result tables
+  input-datasets/            the six datasets: raw expression tables (raw_data/) and their
+                             iPathwayGuide analysis results (ipathwayguide_results/<GSE>/)
+prompts/                     the prompts as run: the four Nova workflows, the SonicChat judge, the
+                             question rephraser, and the benchmark generation prompt with its validators
 scripts/                     analysis code that recomputes every number, table, and figure
+  literature_engine/         the PubMed literature engine: hybrid lexical (BM25) + semantic retrieval
+  nova_cli/                  an illustrative command-line chat with the four workflows and sessions
 figures/                     figures produced by the scripts (Figs. 1-4 of the paper and supplementary figures)
 docs/workflow_specification.md   specification of the four Nova workflows
 ```
@@ -132,14 +138,17 @@ unchanged. The iPathwayGuide result tables in the packages are the analysis resu
 
 ## Nova workflows
 
-The four workflows are specified in [`docs/workflow_specification.md`](docs/workflow_specification.md):
-shared evidence sources and rules of evidence, the output contract for hypothesis
-evaluation, and the planning, evidence execution, and synthesis of each workflow.
+The four workflows are specified in [`docs/workflow_specification.md`](docs/workflow_specification.md),
+and their prompts are in [`prompts/`](prompts) (see [`prompts/README.md`](prompts/README.md) for the
+stages of each workflow). [`scripts/nova_cli/`](scripts/nova_cli) is a minimal command-line chat that
+assembles the same prompts, the experiment-data tools over `data/input-datasets/`, the literature engine
+in [`scripts/literature_engine/`](scripts/literature_engine), and sessions that keep every earlier turn
+as context. It is an illustrative sketch of the design; running it needs a model endpoint of your own.
 
 ## License
 
 Code (`scripts/`) is released under the [MIT License](LICENSE). The benchmark, results,
-figures, and documentation (`data/`, `figures/`, `docs/`) are released under
+figures, prompts, and documentation (`data/`, `figures/`, `prompts/`, `docs/`) are released under
 [CC BY 4.0](LICENSE-DATA.md). The six source datasets are public GEO accessions.
 
 ## Citation

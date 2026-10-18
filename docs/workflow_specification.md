@@ -100,9 +100,3 @@ Unlike Thinking, the number and scope of reasoning steps are determined by the r
 4. **Enrich and re-route** to a more intensive workflow when the response is insufficient.
 5. If grounded evidence remains insufficient, return the supported partial result
    or report the evidence gap rather than filling it from parametric knowledge.
-
-## Versions evaluated
-
-The result workbooks identify the evaluated versions in the `Agent_ID` column:
-Instant 1.2 (`chatbot@1.2`), Thinking 0.7 (`chatbot_thinking@0.7`),
-Deep Thinking 1.7 (`chatbot_deep_thinking@1.7`), and Auto 0.7 (`chatbot_auto@0.7`).
