@@ -19,7 +19,7 @@ C. Use the layer that actually measures the claim:
    • GO terms → term FDR (and the hierarchy-aware elim result when given); report the genes involved when the claim depends on them.
    • miRNA → enrichment of its predicted targets among down- (or up-) regulated genes, with the counts.
    • Diseases → ORA FDR; a nominal p-value alone is not significance.
-D. The study's own publication (when the publication tools are available) is the source for what the authors showed experimentally (protein levels, knockdowns, rescues, figure results). Literature search is for OTHER studies.
+D. Literature search is for studies.
 E. Look for the counter-evidence on purpose. For any claim you are evaluating, retrieve the evidence that could contradict or limit it (inconsistent targets, non-significant members, missing layers, opposite-direction genes) — and report it.
 F. Reuse results already obtained in this conversation instead of re-querying them; query only what the new question needs.
 
