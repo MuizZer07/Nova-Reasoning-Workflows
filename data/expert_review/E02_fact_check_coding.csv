@@ -1,0 +1,119 @@
+Case_No,Case_ID,Response_Label,Code,Note
+1,HV-001,ALL,GOOD,Every value matches the reference (TNF IRF9 IL6 ICAM1)
+1,HV-001,A,DATA,Implies IL6 fails both cutoffs; it passes |logFC| and fails only on adjusted p
+1,HV-001,C,DATA,Implies IL6 fails both cutoffs; it passes |logFC| and fails only on adjusted p
+1,HV-001,D,DATA,Implies IL6 fails both cutoffs; it passes |logFC| and fails only on adjusted p
+1,HV-001,B,GOOD,States correctly that IL6 fails only on adjusted p
+1,HV-001,ALL,MISS_REF,None raises the reference's main point: the contrast is most consistent with post-mortem lung and not NHBE
+1,HV-001,A,UNVER,IL6 upstream-regulator figures (15/24 p 0.949)
+1,HV-001,A,CONTEXT,Attributes the discrepancy to the NHBE sample subset (treats the contrast as NHBE)
+1,HV-001,B,CONTEXT,Header calls it a SARS-CoV-2 vs healthy NHBE contrast
+1,HV-001,C,CONTEXT,Calls it a SARS-CoV-2 vs mock NHBE contrast
+1,HV-001,C,UNVER,RUVSeq batch-correction claim
+1,HV-001,C,UNVER,Regulator analysis predicts all four as activated
+1,HV-001,D,FACT,Calls the regulator p (0.70) an over-representation p
+1,HV-001,D,STYLE,Garbled phrase (the 4 of 4 concordance question)
+2,HV-002,ALL,GOOD,Core values match the reference (26/134; cytokine activity 29/103; chemokine activity 10/20)
+2,HV-002,ALL,MISS_REF,None mentions the perturbation support (pAcc 0.0005)
+2,HV-002,ALL,MISS_REF,None mentions that the authors drew their follow-up genes from the chemokine-activity category
+2,HV-002,A,INCON,Chemokine receptor binding given as 11/29 DE and then as represented by only one DE gene
+2,HV-002,A,DATA,Labels the pathway p-values as ORA p-values (reference separates pORA 4.5e-9 from FDR 1.9e-8)
+2,HV-002,A,DATA,Says no perturbation score was available although pAcc exists
+2,HV-002,A,CONTEXT,Reframes the authors' claim as responders vs non-responders
+2,HV-002,B,UNVER,Added parent GO terms (agree with C and D)
+2,HV-002,C,UNVER,hsa04061 with the other two pathways make up the top three KEGG ranks
+2,HV-002,C,CITE_FLAG,Cites placeholder references marked [PMID: unverified]
+2,HV-002,D,UNVER,hsa04061 top-three claim
+2,HV-002,D,UNVER,Five of the top 25 MF terms
+2,HV-002,D,GOOD,Impact-analysis citations are real and correctly attributed
+3,HV-003,ALL,GOOD,Core values match (TGFB1; KEGG hsa04350; regulator call)
+3,HV-003,ALL,MISS_EXP,None notes that the analysed contrast is unrecorded (HepG2 HepaRG hSKP-HPC or ALF)
+3,HV-003,B,OVER,Asserts the publication's Necrosis of Liver table is a disease-annotation result; unsupported and conflicts with the question
+3,HV-003,C,OVER,Asserts the publication's Necrosis of Liver table is a disease-annotation result; unsupported and conflicts with the question
+3,HV-003,D,OVER,Asserts the publication's Necrosis of Liver table is a disease-annotation result; unsupported and conflicts with the question
+3,HV-003,A,DATA,Calls SMAD2 significant although it is not DE (|logFC| < 0.6)
+3,HV-003,A,OVER,Says the publication's claim is not reproducible from this dataset (may not be the ALF contrast)
+3,HV-003,A,UNVER,Not among the top 20 pathways
+3,HV-003,B,GOOD,Handles SMAD2 correctly (not DE)
+3,HV-003,B,UNVER,GDF15 value
+3,HV-003,B,OMIT,Omits CDKN1A
+3,HV-003,B,UNVER,62 of 316 pathways significant
+3,HV-003,C,INCON,TGFB1 predicted inhibited but 3 of 5 targets described as activation-consistent
+3,HV-003,C,UNVER,212 of 704 disease terms
+3,HV-003,D,INCON,Intro says SMAD2 is the only significant signal; section 2 lists INHBE and BMP2 as DE
+3,HV-003,D,DATA,Calls SMAD2 significantly downregulated although it is not DE
+3,HV-003,D,OVER,Labels the result contradicted although every value is non-significant (null rather than contradictory)
+3,HV-003,D,STYLE,Garbled verdict sentence
+4,HV-009,ALL,NOTE,miR-424-5p statistics differ between A and B (possibly FDR vs raw p; cannot tell from the form)
+4,HV-009,A,GOOD,Explicitly restates the turn-3 point (no cluster-member activity)
+4,HV-009,B,GOOD,Added inference is clearly labelled as an inference
+4,HV-009,B,UNVER,TaqMan/RT-qPCR Methods detail
+4,HV-009,C,FACT,Calls the miR-424-5p signal shared-seed enrichment; miR-424-5p does not share a seed with miR-542-3p
+4,HV-009,C,OMIT,Does not explicitly restate the turn-3 finding
+4,HV-009,D,FACT,Calls MEG3 MEG8 DLK1 DIO3 neighbouring genes; DLK1-DIO3 is on 14q32 and the cluster on Xq26.3
+4,HV-009,D,FACT,Treats host-gene probes on the HT-12 array as pri-miRNA readouts (questionable)
+4,HV-009,D,UNVER,Direct quotations from the paper
+4,HV-009,D,GOOD,Restates the earlier conclusion explicitly
+5,HV-011,ALL,GOOD,18/18 consistent targets and z = -4.24 consistent everywhere
+5,HV-011,A,CONTEXT,Reads GPSM2 and PCP2 (placeholder adj p 0; unmeasured) as not expressed
+5,HV-011,B,CONTEXT,Reads GPSM2 and PCP2 (placeholder adj p 0; unmeasured) as not expressed
+5,HV-011,C,CONTEXT,Reads GPSM2 and PCP2 (placeholder adj p 0; unmeasured) as not expressed
+5,HV-011,ALL,MISS_REF,None removes these calls from the braking evidence base (the expected revision)
+5,HV-011,A,CONTEXT,Refers to NHBE cells and bronchial epithelium
+5,HV-011,A,INCON,Singles out GPSM3 although its own point is that the four calls are one shared signal
+5,HV-011,A,STYLE,Hypothesis-state language in a conversation case
+5,HV-011,B,CONTEXT,Mislabels the contrast as NHBE
+5,HV-011,B,FACT,Calls PCP2 a member of the RGS family; it is a GoLoco-motif protein
+5,HV-011,B,OVER,No literature support for immune roles; GPSM3 has a published leukocyte role
+5,HV-011,C,CITE,PMID 38674408 (GPSM2 in colorectal cancer) cited for a GPSM3-glioblastoma link
+5,HV-011,D,CITE,PMID 38674408 (GPSM2 in colorectal cancer) cited for a GPSM3-glioblastoma link
+5,HV-011,D,CITE_FLAG,Uses a [PMID: unverified] marker
+5,HV-011,D,OVER,None are established immunoregulators; overstated given GPSM3's known role
+5,HV-011,D,STYLE,Hypothesis-state language in a conversation case
+6,HV-015,ALL,GOOD,Values match the evidence
+6,HV-015,ALL,NOTE,All four give CONTRADICTED; the reference state is Weakened
+6,HV-015,ALL,MISS_EXP,None raises cell-composition change in bulk autopsy lung as an alternative explanation
+6,HV-015,A,DATA,5 of 5 significant DE p53 genes down; the earlier step listed 6 (PTEN)
+6,HV-015,A,OVER,GDF15 strongly repressed although adj p is 0.076
+6,HV-015,B,INCON,One gene essentially unchanged and then two near-zero genes named
+6,HV-015,B,OVER,Treats the non-significant TP53 regulator call as an independent line of evidence
+6,HV-015,B,CONTEXT,Calls ZMAT3 and CCNG1 originally named targets; the hypothesis did not name them
+6,HV-015,C,OMIT,Omits PTEN
+6,HV-015,C,GOOD,Otherwise no factual issues
+6,HV-015,D,OVER,Calls the non-significant TP53 regulator call (FDR 0.246) further corroborated
+7,HV-016,ALL,GOOD,TIMP values match the evidence
+7,HV-016,ALL,CONTEXT,TIMP4 at 0.00 / 1.0 (likely unmeasured placeholder) read as a real flat result
+7,HV-016,ALL,MISS_REF,None mentions the unrecorded time point or that the paper's TIMP2 induction was at late time points under a 2-fold criterion
+7,HV-016,A,UNVER,Serpin SPINK and cystatin values
+7,HV-016,A,FACT,Counts SERPINH1 (non-inhibitory collagen chaperone) among the inhibitors
+7,HV-016,B,NOTE,Refers to earlier serpin results from its own earlier steps (allowed)
+7,HV-016,C,NOTE,Refers to earlier serpin results from its own earlier steps (allowed)
+7,HV-016,C,GOOD,Explicitly notes that non-significance does not contradict the hypothesis
+7,HV-016,D,STYLE,Process language (reproduce the ledger values exactly)
+8,HV-017,ALL,GOOD,BIRC5 and ILK values match everywhere
+8,HV-017,ALL,MISS_EXP,None notes that BIRC5 is p53-repressed and cell-cycle-linked so it does not discriminate p53-independent action
+8,HV-017,C,GOOD,Comes closest: independence rests on the shRNA experiment
+8,HV-017,A,GOOD,No factual issues
+8,HV-017,B,CITE,Attributes BIRC5/ILK targeting to prior refs 49 and 25; the Discussion says the expression analysis revealed them
+8,HV-017,C,INCON,All four ERK/MAPK genes down and significant and then MAPK3 trend-only with three passing
+8,HV-017,C,CONTEXT,Calls the control sham; it was a negative-control mimic
+8,HV-017,C,UNVER,TP53 regulator figures
+8,HV-017,D,NOTE,Status reads SUPPORT (Supported); reference state is Partially supported
+9,HV-019,ALL,GOOD,Values match the evidence; ~2.1-fold correct
+9,HV-019,ALL,MISS_REF,None mentions that the effect is conditional on cortisone substrate in culture
+9,HV-019,ALL,MISS_EXP,None mentions that HSD11B1 reductase direction depends on H6PD/NADPH supply
+9,HV-019,A,STYLE,Opening sentence reads like a no while the conclusion is consistent with the hypothesis
+9,HV-019,B,UNVER,Previews later-step genes (clearly flagged as out of scope)
+9,HV-019,C,OVER,Literature confirms overstates transfer from a Th2-cytokine study to this experiment
+9,HV-019,C,GOOD,Notes that the contrast identity is unverified
+9,HV-019,D,GOOD,Notes that the contrast identity is unverified
+9,HV-019,D,STYLE,Stray formatting and a truncated status line
+10,HV-022,ALL,GOOD,MF values match the evidence; 4/10 wrong direction correct
+10,HV-022,A,GOOD,Status Weakened consistent with its reasoning
+10,HV-022,B,INCON,Status PARTIALLY_SUPPORTED upgrades from Weakened while its text says the evidence is agnostic
+10,HV-022,B,DATA,Gene ratio for CCR chemokine receptor binding given as 34%; correct is 42% (10/24)
+10,HV-022,C,INCON,Status CONTRADICT downgrades from Weakened on evidence it describes as confirming the program
+10,HV-022,C,OMIT,Lists 9 genes as the genes driving an 11-gene term
+10,HV-022,C,UNVER,elim p-values and GO-BP / hallmark evidence
+10,HV-022,D,FACT,Lists GPCR binding among four chemokine-specific terms (minor mislabel)
+10,HV-022,D,GOOD,Status Weakened consistent with its reasoning

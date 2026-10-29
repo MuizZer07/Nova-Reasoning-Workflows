@@ -352,8 +352,8 @@ DX0, DW0 = 11.35, 4.5
 panel(DX0, BY, DW0, BH, "D", "Item Annotation and Evaluation")
 text(DX0 + 0.25, 3.92, "A priori Reasoning Requirement Levels", 11.5, INK2, "bold", ha="left")
 text(DX0 + DW0 - 0.15, 3.92, "Items", 11.5, INK2, "bold", ha="right")
-levels = [("L0", "Retrieval", 46), ("L1", "Interpretation", 133), ("L2", "Cross-layer integration", 309),
-          ("L3", "Mechanistic synthesis", 243), ("L4", "Critical mech. reasoning", 269)]
+levels = [("L0", "Retrieval", 47), ("L1", "Interpretation", 127), ("L2", "Cross-layer integration", 295),
+          ("L3", "Mechanistic synthesis", 303), ("L4", "Critical mech. reasoning", 228)]
 for i, (lv, name, n) in enumerate(levels):
     y = 3.62 - i * 0.27
     ax.add_patch(plt.Rectangle((DX0 + 0.25, y - 0.11), 0.36, 0.22, color=RRL[i], zorder=2))
@@ -363,25 +363,34 @@ for i, (lv, name, n) in enumerate(levels):
     ax.add_patch(plt.Rectangle((DX0 + 2.75, y - 0.09), bl, 0.18, color=RRL[i], zorder=2))
     text(DX0 + 2.8 + bl, y, str(n), 11, INK2, ha="left")
 
-# how answers are evaluated: a small two-column table (aspect, measure)
+# how answers are evaluated: a two-column table (aspect, measure) in three groups: graded against the reference
+# annotations, graded without them (SonicChat), and system checks that are measured rather than graded
 text(DX0 + 0.25, 2.27, "Measures  (graders: Claude Opus 5.5; GPT-6)", 11.5, INK2, "bold", ha="left")
-ev = [("Credit", "Match to reference: 1, 0.5, or 0"),
-      ("Quality", "Correctness, completeness, reasoning"),
-      ("Judge", "SonicChat score (0–10), no reference"),
-      ("Grounding", "Unsupported claims (%)"),
-      ("Conversations", "Fact preservation, revision"),
-      ("Hypotheses", "Relation, state, decision, calibration"),
-      ("Suite score", "Mean over the three settings"),
-      ("Cost", "Tokens, tool calls, response time")]
-TX0, TX1, TW1, RH = DX0 + 0.2, DX0 + DW0 - 0.15, 1.2, 0.235
-ty = 2.1
-for k, (lab, body) in enumerate(ev):
-    fill = CARD if k % 2 == 0 else tint(INK2, 0.05)
-    ax.add_patch(plt.Rectangle((TX0, ty - RH), TX1 - TX0, RH, fc=fill, ec="none", zorder=1))
-    text(TX0 + 0.07, ty - RH / 2, lab, 11, INK, "bold", ha="left")
-    text(TX0 + TW1 + 0.05, ty - RH / 2, body, 11, INK2, ha="left")
-    ty -= RH
-ax.plot([TX0 + TW1 - 0.02] * 2, [2.1, ty], color=LINE, lw=0.8, zorder=2)
+groups = [("Graded against the reference", DATA,
+           [("Credit", "Match to reference: 1, 0.5, or 0"),
+            ("Quality", "Correctness, completeness, reasoning"),
+            ("Conversations", "Fact preservation, revision"),
+            ("Hypotheses", "Relation, state, decision, calibration"),
+            ("Suite score", "Mean over the three settings")]),
+          ("Graded without the reference (SonicChat)", LIT,
+           [("Judge", "SonicChat score (0–10), no reference"),
+            ("Grounding", "Unsupported claims (%)")]),
+          ("System checks (measured, not graded)", MODEL,
+           [("Cost", "Tokens, tool calls, response time")])]
+TX0, TX1, TW1, RH, GH = DX0 + 0.2, DX0 + DW0 - 0.15, 1.2, 0.175, 0.155
+ty = 2.12
+for gname, gcol, rows in groups:
+    text(TX0 + 0.04, ty - GH / 2, gname, 10, gcol, "bold", ha="left", style="italic")
+    ty -= GH
+    y0 = ty
+    for k, (lab, body) in enumerate(rows):
+        fill = CARD if k % 2 == 0 else tint(INK2, 0.05)
+        ax.add_patch(plt.Rectangle((TX0, ty - RH), TX1 - TX0, RH, fc=fill, ec="none", zorder=1))
+        text(TX0 + 0.07, ty - RH / 2, lab, 11, INK, "bold", ha="left")
+        text(TX0 + TW1 + 0.05, ty - RH / 2, body, 11, INK2, ha="left")
+        ty -= RH
+    ax.add_patch(plt.Rectangle((TX0 - 0.05, ty), 0.035, y0 - ty, fc=gcol, ec="none", zorder=2))
+    ax.plot([TX0 + TW1 - 0.02] * 2, [y0, ty], color=LINE, lw=0.8, zorder=2)
 
 # =============================================================== flow between panels
 # B -> C: benchmark items are built from the datasets; C -> D: answers to them are evaluated

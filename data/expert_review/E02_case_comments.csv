@@ -1,0 +1,11 @@
+Case_No,Case_ID,Reference_Values_Confirmed,Comment_Type,Comment
+1,HV-001,yes,QUESTION_PREMISE,The question's premise is the NHBE culture comparison but the analysed contrast is most consistent with post-mortem lung; the reference handles this and no response surfaces it
+2,HV-002,yes,QUESTION_WORDING,"""Distinguished the vitamin D responses"" refers in the paper to a comparison between donor groups that this single contrast cannot test"
+3,HV-003,yes,QUESTION_PREMISE,The analysed contrast is unrecorded and may be an in vitro hepatocyte model; absence of TGFB1 induction may then be expected rather than divergent
+4,HV-009,yes,NONE,None needed
+5,HV-011,yes,REFERENCE_SPECULATIVE,The reference's suggestion that the shared targets are most likely chemokine/GPCR signalling genes is not shown in the evidence
+6,HV-015,yes,REFERENCE_LABEL,The Contradicts relation rests on non-significant trends while HV-016 treats non-significant trends as Qualifies; bulk-tissue composition is an alternative explanation
+7,HV-016,yes,EVIDENCE_PLACEHOLDER,TIMP4 logFC 0.00 with adj p 1.0 may be a placeholder for an unmeasured gene
+8,HV-017,yes,REFERENCE_LABEL,BIRC5 is p53-repressed and cell-cycle-linked; this may limit how strongly the step supports the p53-independent arm
+9,HV-019,yes,REFERENCE_LABEL,The Supports relation depends on cortisone availability and H6PD-dependent reductase activity; neither is measured
+10,HV-022,yes,QUESTION_WORDING,"""Independently confirm"" overstates how separate the MF evidence is from Step 1"

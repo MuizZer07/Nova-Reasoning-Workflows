@@ -1,0 +1,62 @@
+Step_ID,basis,nonsig_direction,rule_consistent,note
+NOVA-S3-D1-H02-S06,PUB,N/A,YES,Rescue experiment and fold-change comparison in the publication
+NOVA-S3-D1-H02-S08,SYNTH,N/A,YES,Final assessment integrating the publication experiments
+NOVA-S3-D1-H05-S02,SIG,N/A,YES,Set composition of DE genes (48 of ~700 down genes are targets)
+NOVA-S3-D1-H05-S03,SIG,N/A,YES,Untransfected miRNAs enriched among down genes (FDR ~0.014)
+NOVA-S3-D1-H05-S04,SIG,N/A,YES,Adhesion/migration programs FDR 1e-8 to 1e-6
+NOVA-S3-D1-H05-S05,PUB,N/A,YES,RPS23 DE and the publication's downstream program
+NOVA-S3-D1-H05-S06,SYNTH,N/A,YES,Integrates significant composition and program steps
+NOVA-S3-D1-H05-S07,SIG,N/A,YES,CC terms FDR 2.9e-8 to 6e-14
+NOVA-S3-D1-H05-S11,SYNTH,N/A,YES,Final assessment
+NOVA-S3-D2-H02-S02,NONSIG,OPPOSITE,YES,7 of 10 predicted NHBE genes not DE; several trend down (CXCL2 -1.71)
+NOVA-S3-D2-H02-S03,SIG,N/A,YES,A different CC-chemokine set strongly induced
+NOVA-S3-D2-H02-S05,SIG,N/A,YES,Post-mortem lung trio induced (adj p 1e-6 to 0.024)
+NOVA-S3-D2-H02-S06,NONSIG,FLAT_OR_ABSENT,YES,IL6 predicted induced; -0.60 (adj p 0.74)
+NOVA-S3-D2-H02-S07,NONSIG,OPPOSITE,YES,Missing NHBE genes trend flat or negative
+NOVA-S3-D2-H02-S08,SIG,N/A,YES,Myeloid cell-type sets FDR 1e-46
+NOVA-S3-D2-H02-S09,SYNTH,N/A,YES,Final assessment
+NOVA-S3-D2-H03-S02,NONSIG,FLAT_OR_ABSENT,YES,IL-6 arm (IL6 IL6R IL6ST STAT3) not DE; state stays Partially supported
+NOVA-S3-D2-H04-S03,SIG,N/A,YES,NF-kB GO processes FDR 0.018-0.035
+NOVA-S3-D2-H04-S05,PUB,N/A,YES,Ruxolitinib experiment in the publication
+NOVA-S3-D2-H05-S01,SIG,N/A,YES,Myeloid markers strongly induced
+NOVA-S3-D2-H05-S02,SIG,N/A,YES,Myeloid cell-type sets FDR 1e-46 to 1e-13
+NOVA-S3-D2-H05-S03,SIG,N/A,YES,Granule compartments FDR 2e-4 to 7e-4
+NOVA-S3-D2-H05-S04,SIG,N/A,YES,Granulocyte markers and compartments
+NOVA-S3-D2-H05-S09,PUB,N/A,YES,Publication's recruitment interpretation
+NOVA-S3-D2-H05-S11,SYNTH,N/A,YES,Final assessment
+NOVA-S3-D3-H01-S04,NONSIG,PREDICTED,NO,JAK2 +0.83 (0.058) STAT2 +0.82 (0.094) STAT1 +0.46 trend up as predicted; reference itself says not a contradiction
+NOVA-S3-D3-H02-S03,NONSIG,OPPOSITE,YES,BCR components predicted inhibited (FDR 0.073-0.25); CD79B mRNA up
+NOVA-S3-D3-H02-S04,NONSIG,FLAT_OR_ABSENT,YES,KEGG BCR totalAcc 0 FDR 0.60
+NOVA-S3-D3-H02-S06,SIG,N/A,YES,Plasma-cell sets FDR 1.5e-16 (simpler explanation)
+NOVA-S3-D3-H02-S08,SYNTH,N/A,YES,Final assessment
+NOVA-S3-D3-H03-S02,SIG,N/A,YES,Five p53 targets significantly down (expert E02 HV-015 is the next step)
+NOVA-S3-D3-H03-S03,NONSIG,OPPOSITE,YES,Expert case HV-015; predicted induction absent; CDKN1A GDF15 trend down
+NOVA-S3-D3-H03-S04,NONSIG,OPPOSITE,YES,TP53 leans inhibited (z -0.83) non-significant
+NOVA-S3-D3-H03-S07,NONSIG,OPPOSITE,YES,p53-activating compounds all negative z non-significant
+NOVA-S3-D3-H03-S11,SYNTH,N/A,YES,Final assessment
+NOVA-S3-D3-H04-S02,NONSIG,PREDICTED,NO,CD274 +0.89 PDCD1LG2 +0.79 TIGIT +1.77 trend up as predicted (non-significant); CTLA4 HAVCR2 flat
+NOVA-S3-D3-H04-S07,NONSIG,FLAT_OR_ABSENT,YES,Checkpoint and tryptophan pathways FDR 0.74-0.76
+NOVA-S3-D3-H05-S03,NONSIG,FLAT_OR_ABSENT,YES,AT2 sets 1 DE gene each (FDR 0.63-0.78); reference calls it not decisive
+NOVA-S3-D3-H05-S04,NONSIG,FLAT_OR_ABSENT,UNCLEAR,TMPRSS2 -0.27 (0.74) essentially flat; reference text calls it a failure to observe rather than a contradiction
+NOVA-S3-D4-H02-S03,NONSIG,FLAT_OR_ABSENT,UNCLEAR,Outputs mostly flat but IER3 -2.52 (0.093) IL1B -0.53 PTGS2 -0.44 trend down as predicted
+NOVA-S3-D4-H03-S04,PUB,N/A,YES,Serpins trend down (non-significant) and the publication states inhibitors are over-represented among suppressed genes
+NOVA-S3-D5-H01-S03,NONSIG,OPPOSITE,YES,TP53 predicted inhibited (z -0.85 FDR 0.17)
+NOVA-S3-D5-H02-S01,SIG,N/A,YES,TRIB3 significantly down (opposite to prediction)
+NOVA-S3-D5-H02-S02,NONSIG,OPPOSITE,YES,DDIT3 -0.27 (0.48)
+NOVA-S3-D5-H02-S03,NONSIG,FLAT_OR_ABSENT,YES,ASNS CHAC1 flat
+NOVA-S3-D5-H02-S04,NONSIG,OPPOSITE,YES,ATF4 flat; regulator z -1.41 non-significant
+NOVA-S3-D5-H02-S05,SIG,N/A,YES,INHBE significantly down (opposite to prediction)
+NOVA-S3-D5-H02-S06,NONSIG,OPPOSITE,YES,ER pathway pv 0.43; XBP1 -0.53 (0.059)
+NOVA-S3-D5-H02-S07,SIG,N/A,YES,Tunicamycin z -4.71 FDR 1e-4
+NOVA-S3-D5-H03-S03,NONSIG,FLAT_OR_ABSENT,YES,Inflammasome genes flat (several at placeholder 0 / 1)
+NOVA-S3-D5-H03-S04,NONSIG,OPPOSITE,YES,STAT1 +0.34 IRF7 +0.45 against a predicted decrease
+NOVA-S3-D5-H03-S06,NONSIG,FLAT_OR_ABSENT,YES,NOD-like and Toll-like pathways FDR 0.36-0.56
+NOVA-S3-D5-H04-S05,NONSIG,FLAT_OR_ABSENT,YES,Neuronal markers at logFC 0 / adj p 1 (likely unmeasured placeholders)
+NOVA-S3-D6-H02-S03,NONSIG,FLAT_OR_ABSENT,YES,IRF9 STAT2 transcripts flat despite significant inferred inhibition
+NOVA-S3-D6-H03-S04,NONSIG,FLAT_OR_ABSENT,YES,Specific GR feedback genes flat; ZFP36 ERRFI1 SGK1 significantly up but discounted as non-specific
+NOVA-S3-D6-H03-S05,NONSIG,FLAT_OR_ABSENT,YES,NR3C1 transcript and activity unchanged
+NOVA-S3-D6-H03-S07,NONSIG,FLAT_OR_ABSENT,YES,Dexamethasone signature balanced (151 vs 150); other glucocorticoids non-significant
+NOVA-S3-D6-H04-S01,SIG,N/A,YES,Mitogens significantly induced (opposite to prediction)
+NOVA-S3-D6-H04-S03,SIG,N/A,YES,INS-like signalling activated FDR 2e-5
+NOVA-S3-D6-H04-S05,PUB,N/A,YES,ADAM33 flat MMP9 unmeasured; publication reports neither DE
+NOVA-S3-D6-H04-S11,SYNTH,N/A,YES,Final assessment

@@ -1,0 +1,128 @@
+Step_ID,basis,nonsig_direction,rule_consistent,note
+NOVA-S3-D1-H01-S04,MIXED,,YES,"Arrest effectors sig induced; BBC3/TNFRSF10B flat, PMAIP1 down limit uniform p53 program."
+NOVA-S3-D1-H01-S05,MIXED,,YES,Sig ORA (9.4e-14) but non-significant perturbation (pAcc 0.081); some members down.
+NOVA-S3-D1-H02-S03,NONSIG,FLAT_OR_ABSENT,UNCLEAR,"RPL11 mRNA flat; but H0's RPL11 step is post-transcriptional, so no mRNA change was predicted."
+NOVA-S3-D1-H02-S04,MIXED,,YES,"KEGG Ribosome sig (FDR 0.047); biogenesis terms not enriched, not predicted transcriptionally."
+NOVA-S3-D1-H02-S07,MIXED,,YES,Other RP genes strongly repressed; data cannot isolate additional route.
+NOVA-S3-D1-H03-S03,MIXED,,YES,MEK/ERK transcripts sig down (prior step) but regulator z positive non-significant (opposite to inhibition).
+NOVA-S3-D1-H03-S05,MIXED,,YES,"MAPK pathway sig ORA; net totalAcc positive, pAcc 0.12 non-significant, opposite to 'reduced'."
+NOVA-S3-D1-H03-S08,PUB,,YES,Paper Fig 5E-F: cell death p53-dependent; bounds scope of independence claim.
+NOVA-S3-D1-H03-S09,SYNTH,,YES,Design limitation: no p53-depletion arm; independence untestable from transcriptome.
+NOVA-S3-D1-H03-S10,PUB,,YES,Alternative (secondary to p53 arrest) not excludable; paper p53-depletion data keep independent component.
+NOVA-S3-D1-H03-S11,SYNTH,,YES,"Integration: down-regulation supported, activity direction and independence only partly."
+NOVA-S3-D1-H04-S04,MIXED,,YES,SREBF inhibition inferred from targets; SREBF transcripts not DE (post-translational control).
+NOVA-S3-D1-H04-S05,MIXED,,YES,"Sterol program robust; no annotation link p53->sterol genes; absence of link, not of predicted change."
+NOVA-S3-D1-H04-S06,PUB,,YES,Publication silent on sterol/SREBP program.
+NOVA-S3-D1-H04-S07,MIXED,,YES,SREBF program clear; non-p53 route equally consistent.
+NOVA-S3-D1-H04-S08,SYNTH,,YES,Design limitation: no p53-perturbation arm to test predicted dependence.
+NOVA-S3-D1-H04-S09,SYNTH,,YES,Single-condition design cannot establish causation; state drops to INSUFFICIENT_EVIDENCE.
+NOVA-S3-D1-H05-S08,SIG,,YES,miR-542-3p top enriched (FDR 2.5e-5); minor direct component within rejected dominance claim.
+NOVA-S3-D1-H05-S09,SYNTH,,YES,Limitation: no kinetic/binding data to partition direct vs secondary.
+NOVA-S3-D1-H05-S10,SYNTH,,YES,Integration: reject dominance but keep minor direct-target component.
+NOVA-S3-D2-H01-S04,SIG,,YES,IFN-gamma set strongest (FDR 4e-21) vs IFN-alpha; type I not uniquely supported.
+NOVA-S3-D2-H01-S05,MIXED,,YES,IFNG sig regulator; type I ligands non-significant positive trends and unmeasured.
+NOVA-S3-D2-H01-S06,SIG,,YES,"Type I signalling terms sig, but type II comparably sig."
+NOVA-S3-D2-H01-S07,MIXED,,YES,Strong ISG effectors; ligands unmeasured so inducer unconfirmed.
+NOVA-S3-D2-H01-S08,SYNTH,,YES,Integration: ISGF3/ISG holds; canonical type I attribution does not.
+NOVA-S3-D2-H03-S03,SIG,,YES,Inflammatory/TNF sets sig; IL6-JAK-STAT3 weaker but still sig.
+NOVA-S3-D2-H03-S04,NONSIG,PREDICTED,YES,IL1B/TNF regulators non-significant but positive z (activation direction predicted).
+NOVA-S3-D2-H03-S06,MIXED,,YES,IL-1 production sig; IL-6 production marginal/non-significant.
+NOVA-S3-D2-H03-S07,SIG,,YES,IL1RN strongly induced (adjpv 1e-6): counter-regulation of IL-1 axis.
+NOVA-S3-D2-H03-S08,MIXED,,YES,"IL-17 sig, NOD near-sig; KEGG TNF pathway not significant (FDR 0.91)."
+NOVA-S3-D2-H03-S09,SIG,,YES,Interferon-gamma set far stronger than inflammatory sets; IL-1 not principal driver.
+NOVA-S3-D2-H03-S11,SYNTH,,YES,"Integration of prior steps; IL-1/TNF real but not principal, IL-6 inactive."
+NOVA-S3-D2-H04-S02,SIG,,YES,"IRF9/STAT2 sig regulators, NF-kB not; signature-wide not per-chemokine."
+NOVA-S3-D2-H04-S04,SIG,,YES,"Chemokines DE; CXCL10/11 ISG-like, CCL2 NF-kB-weighted: heterogeneous drivers."
+NOVA-S3-D2-H04-S07,MIXED,,YES,Chemokine pathway sig; KEGG NF-kB not significant; layers inconsistent.
+NOVA-S3-D2-H04-S09,PUB,,YES,Paper ruxolitinib data point away from IFN dependence; decisive experiment absent here.
+NOVA-S3-D2-H05-S05,NONSIG,OPPOSITE,UNCLEAR,"H0 (intrinsic) predicts no dilution; epithelial markers trend down non-significantly (toward infiltrate), read as compatible."
+NOVA-S3-D2-H05-S10,SYNTH,,YES,Design limitation: no single-cell/deconvolution to resolve source.
+NOVA-S3-D3-H01-S05,MIXED,,YES,"Type I GO sig; ligand regulators non-significant, ligands unmeasured."
+NOVA-S3-D3-H01-S06,NONSIG,PREDICTED,YES,KEGG antiviral maps positive accumulation but FDR>=0.34; directionally consistent.
+NOVA-S3-D3-H01-S08,MIXED,,YES,Immune cell-type sets sig (composition alternative); paper ROI data partly support.
+NOVA-S3-D3-H01-S09,SYNTH,,YES,"Integration: ISGF3 activity kept, component upregulation dropped."
+NOVA-S3-D3-H02-S02,SIG,,YES,BCR GO term sig but Ig-driven; B cell activation not significant.
+NOVA-S3-D3-H02-S05,MIXED,,YES,B-lineage/secretory genes DE up; BCR kinases flat; favours abundance alternative.
+NOVA-S3-D3-H02-S07,NONSIG,FLAT_OR_ABSENT,UNCLEAR,"No pub B-cell claim, disease term FDR 0.14, contrast unverified; limitations rather than predicted change tested."
+NOVA-S3-D3-H03-S05,NONSIG,PREDICTED,YES,p53 map totalAcc +1.84 (activation direction) but pAcc 0.39; label QUALIFIES fits rule.
+NOVA-S3-D3-H03-S08,SIG,,YES,Other stress genes DE down: global group difference alternative.
+NOVA-S3-D3-H03-S10,MIXED,,YES,Five p53 members DE down; TP53 inhibition non-significant; suppression not established.
+NOVA-S3-D3-H04-S03,NONSIG,OPPOSITE,NO,"PDCD1/CD274 regulator calls non-significant and lean inhibited, opposite to predicted checkpoint activation."
+NOVA-S3-D3-H04-S04,MIXED,,YES,Hallmark IFN-gamma sig but non-specific; type II GO and IFNG regulator non-significant.
+NOVA-S3-D3-H04-S05,MIXED,,YES,CXCL10 DE up; CXCL11 trend up; CXCL9 non-significant down.
+NOVA-S3-D3-H04-S06,MIXED,,YES,"GZMA DE, lymphoid sets sig; core T-cell markers not DE; composition alternative."
+NOVA-S3-D3-H04-S08,PUB,,YES,"Paper ROI protein evidence, whole-slide IHC null; not transferable to bulk contrast."
+NOVA-S3-D3-H04-S09,SIG,,YES,IDO1 magnitude matches ISGs; STAT1/STAT2 sig activated: generic ISG explanation.
+NOVA-S3-D3-H04-S11,SYNTH,,YES,Integration: IDO1/LAG3 up retained; coordinated IFN-gamma checkpoint program dropped.
+NOVA-S3-D3-H05-S01,NONSIG,PREDICTED,YES,Surfactant genes trend down non-significantly (predicted depletion); SFTPD up.
+NOVA-S3-D3-H05-S02,NONSIG,FLAT_OR_ABSENT,UNCLEAR,Mixed: LAMP3/ABCA3 trend down (predicted) but key marker NAPSA flat; none DE.
+NOVA-S3-D3-H05-S05,MIXED,,YES,"MUC3A DE, mucous-cell set sig; keratins/mucins trend up non-significantly."
+NOVA-S3-D3-H05-S06,SYNTH,,YES,Methodological power argument (90% large FCs non-significant); downgrades prior nulls.
+NOVA-S3-D3-H05-S08,PUB,,YES,Paper epithelial evidence from different (virus-high vs low) comparison.
+NOVA-S3-D3-H05-S09,PUB,,YES,Paper sampling/lobe heterogeneity limits interpreting nulls.
+NOVA-S3-D3-H05-S11,SYNTH,,YES,Integration -> INSUFFICIENT_EVIDENCE; only directional trends.
+NOVA-S3-D4-H01-S03,NONSIG,PREDICTED,YES,"NR3C1 z 1.73, 3/3 consistent, FDR 0.143: right direction, non-significant."
+NOVA-S3-D4-H01-S05,SIG,,YES,"MPA/DHT/progesterone signatures sig, rank above DEX: limits receptor specificity."
+NOVA-S3-D4-H01-S07,MIXED,,YES,Induced DEGs dominate; paper repression-dominance under other criteria; repressor GO nominal.
+NOVA-S3-D4-H02-S04,PUB,,YES,Unstimulated design (paper); RELA/NFKB1 unchanged; output repression untestable.
+NOVA-S3-D4-H02-S05,MIXED,,YES,IL1B targets sig over-represented; inhibition direction non-significant (FDR 0.077).
+NOVA-S3-D4-H02-S06,MIXED,,YES,"Hallmark TNF/NF-kB sig non-directional; KEGG totalAcc 0, non-significant."
+NOVA-S3-D4-H02-S07,MIXED,,YES,LPS genes sig over-represented; no significant reversal (z -0.32); TPA same direction.
+NOVA-S3-D4-H02-S08,MIXED,,YES,IL4R DE down; IL11 trend down; IL1B flat.
+NOVA-S3-D4-H02-S09,SYNTH,,YES,"Integration: brakes induced, output repression unproven."
+NOVA-S3-D4-H03-S02,NONSIG,PREDICTED,YES,"MMP1 -4.28 adjpv 0.096: predicted direction, concordant with RT-PCR."
+NOVA-S3-D4-H03-S03,NONSIG,PREDICTED,YES,TIMP2 +1.02 adjpv 0.52 (predicted); TIMP1 trends down; reasoning treats inhibitor arm as lost.
+NOVA-S3-D4-H03-S06,MIXED,,YES,Actomyosin genes DE down; motility GO only nominal.
+NOVA-S3-D4-H03-S09,SIG,,YES,"Neoplasm Invasiveness FDR 0.020, non-directional."
+NOVA-S3-D4-H03-S10,MIXED,,YES,No migration/rescue assay; proliferation GO sig as competing explanation.
+NOVA-S3-D4-H03-S11,SYNTH,,YES,"Integration (decision 'Revise'): protease repression supported, inhibitor arm fails."
+NOVA-S3-D4-H04-S01,NONSIG,PREDICTED,YES,STAT1/IRF7/IRF9 all down non-significantly (predicted direction).
+NOVA-S3-D4-H04-S02,MIXED,,YES,IFNGR2 sig small decrease; IFNGR1 unchanged.
+NOVA-S3-D4-H04-S04,NONSIG,FLAT_OR_ABSENT,NO,JAK-STAT/antigen-presentation pathways not perturbed (FDR 0.84/0.46); no IFN GO term: predicted consequence absent.
+NOVA-S3-D4-H04-S06,NONSIG,FLAT_OR_ABSENT,NO,"IFNG regulator z 0 (flat), IFNB1 z +1 not inhibited; state drops to INSUFFICIENT."
+NOVA-S3-D4-H04-S07,NONSIG,FLAT_OR_ABSENT,UNCLEAR,Shared ISGs trend down (predicted) but IFN-gamma-specific IRF1/CIITA flat; alternative-explanation step.
+NOVA-S3-D4-H04-S08,PUB,,YES,"Paper protein/IHC confirmation; here directionally concordant, only IFNGR2 sig."
+NOVA-S3-D4-H04-S09,PUB,,YES,Paper STAT1 translocation is post-translational; not assessable here.
+NOVA-S3-D4-H05-S03,NONSIG,OPPOSITE,NO,"Notch totalAcc +1.21 (not inhibited), HES1/receptors flat; predicted attenuation absent, FDR 0.43."
+NOVA-S3-D4-H05-S04,MIXED,,YES,KLF4 DE up; late markers all up non-significantly.
+NOVA-S3-D4-H05-S05,PUB,,YES,Paper late-time induction; here non-significant concordant trends; timepoint unknown.
+NOVA-S3-D4-H05-S06,MIXED,,YES,KLF4/OVOL2 DE; KLF4 not in regulator layer; ZNF750 single-target non-significant.
+NOVA-S3-D4-H05-S08,MIXED,,YES,Proliferation GO sig (competing explanation); MKI67/CCND1 unchanged.
+NOVA-S3-D4-H05-S10,MIXED,,YES,JAG1 repression sig; HES1/IVL flat so no deficit to rescue (same flat evidence as S03).
+NOVA-S3-D4-H05-S11,SYNTH,,YES,"Integration: JAG1/KLF4 supported, arms incomplete."
+NOVA-S3-D5-H01-S02,SIG,,YES,CDKN1A/CCNG1/CCNG2 DE up; GDF15 DE down; MDM2 not DE.
+NOVA-S3-D5-H01-S05,NONSIG,PREDICTED,YES,"KEGG p53 nominal pv 0.020, FDR 0.195, positive totalAcc: predicted direction."
+NOVA-S3-D5-H01-S07,NONSIG,FLAT_OR_ABSENT,NO,"Predicted apoptotic output absent: apoptosis sets non-significant, BAX/FAS not DE."
+NOVA-S3-D5-H03-S02,MIXED,,YES,IFIT1 DE down; other ISGs trend down non-significantly.
+NOVA-S3-D5-H03-S05,NONSIG,PREDICTED,YES,"STAT1 nominally inhibited from one target, FDR 1.0: predicted direction."
+NOVA-S3-D5-H03-S07,NONSIG,FLAT_OR_ABSENT,NO,No innate/defence GO term enriched; only nominal 'response to stress': predicted coordination absent.
+NOVA-S3-D5-H03-S09,SIG,,YES,LPS anti-correlation FDR 0.0057 but non-specific for inflammasome.
+NOVA-S3-D5-H03-S11,SYNTH,,YES,"Reframing: narrow ISG subset repression retained, inflammasome dropped."
+NOVA-S3-D5-H04-S03,NONSIG,PREDICTED,YES,Microtubule/spindle top-ranked but FDR 0.13/0.056; corroborates.
+NOVA-S3-D5-H04-S09,NONSIG,PREDICTED,YES,"Gliosis/neovascularization nominal, fail FDR; faint consistent echo."
+NOVA-S3-D5-H05-S03,NONSIG,PREDICTED,YES,Other miRNAs sub-threshold down-target enrichment (pvn_fdr 0.084).
+NOVA-S3-D5-H05-S04,SIG,,YES,miR-15/16 sig direction-agnostic (pv_fdr 0.0014) but mixed target directions.
+NOVA-S3-D5-H05-S05,SIG,,YES,"miR-181 strongest pv_fdr 4e-6, directional pvn non-significant, balanced targets."
+NOVA-S3-D5-H05-S06,MIXED,,YES,miR-203a sig by target inference; miRNA itself unmeasured (measurement limit).
+NOVA-S3-D5-H05-S07,NONSIG,PREDICTED,YES,Seed-family members share pvn_fdr 0.084; not independent corroboration.
+NOVA-S3-D5-H05-S09,SIG,,YES,miR-203a survives FDR; others possibly composition-driven.
+NOVA-S3-D5-H05-S10,SIG,,YES,Single FDR-significant miRNA of 341: moderate evidence.
+NOVA-S3-D6-H01-S02,SIG,,YES,Chemokine pathways sig; perturbation significant but net positive (opposite to suppression) - still QUALIFIES.
+NOVA-S3-D6-H01-S03,MIXED,,YES,TNF/IL1B targets sig over-represented; inhibition non-significant; RELA z positive.
+NOVA-S3-D6-H01-S06,SIG,,YES,IL10-like activation sig (FDR 1.7e-4): competing anti-inflammatory route.
+NOVA-S3-D6-H01-S07,MIXED,,YES,CXCL12 sig up (selectivity); paper qPCR/ELISA partly concordant; KPNA4 not DE.
+NOVA-S3-D6-H01-S08,SYNTH,,YES,"Integration: chemokine repression robust, TNF/IL-1/NF-kB attribution not established."
+NOVA-S3-D6-H02-S04,MIXED,,YES,"STAT1 mRNA sig down; inferred activity non-significant, leaning opposite."
+NOVA-S3-D6-H02-S05,SIG,,YES,Type I and type II annotations both sig; annotation cannot assign type.
+NOVA-S3-D6-H02-S07,MIXED,,YES,"Paper ISG baseline tables; IFN ligands unmeasured, ligand inhibition non-significant."
+NOVA-S3-D6-H02-S08,SYNTH,,YES,Integration (decision 'Revise'): ISGF3 activity not component expression.
+NOVA-S3-D6-H03-S02,MIXED,,YES,CEBPB/CEBPD mRNA sig up; activity z negative non-significant (opposite).
+NOVA-S3-D6-H03-S08,SIG,,YES,Unrelated anti-rheumatic agents sig mimicked: removes glucocorticoid specificity.
+NOVA-S3-D6-H03-S11,MIXED,,YES,HSD11B1 sig up; no glucocorticoid arm so enhancement untestable.
+NOVA-S3-D6-H04-S02,SIG,,YES,Negative-regulation SMC proliferation sig; positive branch not.
+NOVA-S3-D6-H04-S07,SIG,,YES,"SPRY1/ERRFI1 sig induced, GO:0090288 sig; ambiguous interpretation."
+NOVA-S3-D6-H04-S09,PUB,,YES,"Design (quiescent, no mitogen) limits test; prior studies cited."
+NOVA-S3-D6-H05-S03,NONSIG,PREDICTED,YES,"CYP24A1 logFC 10 ceiling, adjpv 0.254: predicted direction; state drops to WEAKENED."
+NOVA-S3-D6-H05-S05,NONSIG,FLAT_OR_ABSENT,NO,Response-to-vitamin-D GO not enriched (FDR 0.58); excused as annotation limitation.
+NOVA-S3-D6-H05-S06,MIXED,,YES,"Calcitriol sig (context); other vitamin D compounds incoherent, non-significant, some opposite."
+NOVA-S3-D6-H05-S11,SYNTH,,YES,"Integration: VDR-ligand response supported, CYP24A1 marker not significant."

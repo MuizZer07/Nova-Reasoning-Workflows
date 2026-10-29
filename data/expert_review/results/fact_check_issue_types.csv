@@ -1,0 +1,13 @@
+,Issue,Mentions,Responses
+DATA,Data value or DE status,9,8
+FACT,Domain knowledge,7,6
+CITE,Citation mismatch,3,3
+INCON,Internal inconsistency,8,8
+CONTEXT,Experimental context,15,13
+OVER,Overstated conclusion,11,10
+MISS_REF,Missed reference point,24,20
+MISS_EXP,Missed expert point,16,16
+OMIT,Omitted evidence,4,4
+UNVER,Unverifiable claim,17,14
+CITE_FLAG,Unverified-citation marker,2,2
+STYLE,Wording or format,7,7

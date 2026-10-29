@@ -26,7 +26,7 @@ data/
     nova_run/                Nova run: four workflows on GLM-5.2, graded by Claude Opus 5.5
     gpt6_run/                GPT-6 run: GPT-6 used directly (Instant, Medium, High), graded by Claude Opus 5.5
     regrading_check/         robustness check: the Nova-run answers regraded by GPT-6
-    robustness_subset/D1-D6/ robustness check: 192 items rerun on GLM-5.2 and Claude Haiku 4.5,
+    robustness_subset/D1-D6/ robustness check: 186 items and 6 final decisions rerun on GLM-5.2 and Claude Haiku 4.5,
                              original and rephrased wording (15%_<model>_<wording>.xlsx)
   gpt6_run_packages/D1-D6/   exactly what GPT-6 received in the GPT-6 run: PROMPT.md, the question
                              workbook, and the iPathwayGuide result tables (data/*.tsv)
@@ -34,13 +34,15 @@ data/
                              SonicChat-judge prompts, grading sheets, and the iPathwayGuide result tables
   input-datasets/            the six datasets: raw expression tables (raw_data/) and their
                              iPathwayGuide analysis results (ipathwayguide_results/<GSE>/)
+  expert_review/             blinded expert fact-check of 40 answers (10 cases), its coding, and an
+                             audit of the reference evidence relations
 prompts/                     the prompts as run: the four Nova workflows, the SonicChat judge, the
                              question rephraser, and the benchmark generation prompt with its validators
 scripts/                     analysis code that recomputes every number, table, and figure
   literature_engine/         the PubMed literature engine: hybrid lexical (BM25) + semantic retrieval
   nova_cli/                  an illustrative command-line chat with the four workflows and sessions
 figures/                     figures produced by the scripts (Figs. 1-4 of the paper and supplementary figures)
-supplementary/supplementary_material.pdf   the paper's Supplementary Material (Tables S1-S12, Figs. S1-S7)
+supplementary/supplementary_material.pdf   the paper's Supplementary Material (Tables S1-S14, Figs. S1-S7)
 docs/workflow_specification.md   specification of the four Nova workflows
 ```
 
@@ -98,10 +100,12 @@ python -m venv .venv && .venv/bin/pip install -r scripts/requirements.txt
 .venv/bin/python scripts/nova_results.py         # Nova run: Table 5 (Nova columns), Fig. 2, statistics
 .venv/bin/python scripts/gpt_comparison.py       # Nova vs GPT-6: Table 5, Fig. 3
 .venv/bin/python scripts/judge_comparison.py     # regrading check: Fig. 4
-.venv/bin/python scripts/robustness_results.py   # robustness subset: Table 6
+.venv/bin/python scripts/robustness_results.py   # robustness subset: Supp. Table S13
 .venv/bin/python scripts/main_patterns.py        # task-level analyses and reruns
 .venv/bin/python scripts/mixed_evidence.py       # mixed-evidence numbers quoted in RQ3 and RQ4
 .venv/bin/python scripts/overview_figure.py      # Fig. 1
+.venv/bin/python scripts/expert_fact_check.py    # expert fact-check by workflow, case, and issue type
+.venv/bin/python scripts/reference_relation_audit.py  # audit of the reference evidence relations
 ```
 
 Figures are written to `figures/`. Every number the scripts compute is written as LaTeX
@@ -115,7 +119,6 @@ macro-averaged over the six datasets.
 | Fig. 3 | `gpt_comparison.py` | `figures/fig_ladder.pdf` |
 | Fig. 4 | `judge_comparison.py` | `figures/fig_rq4.pdf` |
 | Table 5 | `nova_results.py`, `gpt_comparison.py` | `tab_gpt.tex`, `results_macros.tex`, `gpt_macros.tex` |
-| Table 6 | `robustness_results.py` | `robust_macros.tex` |
 
 ## Supplementary Material
 
@@ -137,7 +140,8 @@ and scripts in this repository:
 | Fig. S4 | Conversations: credit by turn position, fact preservation, revision | `scripts/nova_results.py` (`figures/fig_interactive.pdf`) |
 | Fig. S5 | Suite score by dataset and workflow | `scripts/nova_results.py` (`figures/fig_datasets.pdf`) |
 | Tables S10-S12 | Results under each grader, grader agreement, reference-based vs. reference-free grading | `scripts/judge_comparison.py` (`tab_judges.tex`, `tab_judge_agree.tex`, `tab_paths.tex`) |
-| Fig. S6 | Robustness subset by setting, model, and wording | `scripts/robustness_results.py` (`figures/fig_robust.pdf`) |
+| Table S13, Fig. S6 | Robustness subset: credit by workflow; by setting, model, and wording | `scripts/robustness_results.py` (`robust_macros.tex`, `figures/fig_robust.pdf`) |
+| Table S14 | Expert fact-check of 40 answers by workflow and issue type | `scripts/expert_fact_check.py` (`data/expert_review/results/`) |
 | Fig. S7 | Worked example (NOVA-S1-D1-033 on the robustness subset) | `data/results/robustness_subset/D1/15%_glm_original.xlsx` |
 
 Tables are written to `$NOVA_NUMBERS_DIR` by the listed scripts.

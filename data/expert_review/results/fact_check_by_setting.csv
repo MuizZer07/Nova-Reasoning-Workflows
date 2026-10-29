@@ -1,0 +1,4 @@
+Setting,Responses,With_Error,Errors,Errors_per_Response,Missed_Ref_Point,With_Error_or_Missed_Ref,Unverifiable_Claims,Credit_Reference_Grader,Overall_Reference_Grader,Overall_SonicChat,Unsupported_Claims_SonicChat,State_Match_S3,Relation_Match_S3,DATA,FACT,CITE,INCON,CONTEXT,OVER
+S1,12,9,20,1.67,8,12,11,1.0,9.54,9.14,5.2,0/0,0/0,7,1,0,3,4,5
+S2,8,6,14,1.75,4,6,2,1.0,9.3,8.8,11.0,0/0,0/0,0,4,2,1,5,2
+S3,20,13,19,0.95,8,16,4,1.0,9.36,9.01,3.4,13/20,12/20,2,2,1,4,6,4

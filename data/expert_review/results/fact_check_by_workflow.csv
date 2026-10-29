@@ -1,0 +1,5 @@
+Workflow,Responses,With_Error,Errors,Errors_per_Response,Missed_Ref_Point,With_Error_or_Missed_Ref,Unverifiable_Claims,Credit_Reference_Grader,Overall_Reference_Grader,Overall_SonicChat,Unsupported_Claims_SonicChat,State_Match_S3,Relation_Match_S3,DATA,FACT,CITE,INCON,CONTEXT,OVER
+Nova Instant,10,5,11,1.1,5,7,4,1.0,9.4,8.93,7.9,3/5,3/5,3,1,0,1,4,2
+Nova Thinking,10,6,11,1.1,5,8,3,1.0,9.37,8.97,5.9,3/5,3/5,2,1,1,1,2,4
+Nova Deep Thinking,10,9,21,2.1,5,10,6,1.0,9.28,8.9,4.9,3/5,3/5,3,4,0,6,6,2
+Nova Auto,10,8,10,1.0,5,9,4,1.0,9.55,9.2,4.3,4/5,3/5,1,1,2,0,3,3
