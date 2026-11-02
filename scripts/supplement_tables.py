@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Supplementary Table S3: paired workflow comparisons on strict accuracy (all items) and on the
-reference-based grades of open answers (correctness, completeness, reasoning).
+"""Supplementary Table S7: paired workflow comparisons on strict accuracy (all items) and on the
+reference-based answer-quality ratings of open answers (correctness, completeness, reasoning).
 
 Same definitions as main_patterns.py: differences are macro-averaged over the six datasets; strict
-accuracy is tested with exact McNemar tests, the 0-10 grades with Wilcoxon signed-rank tests, and
-p-values are Holm-corrected over the six workflow pairs of each measure. Prints LaTeX rows.
+accuracy is tested with exact McNemar tests, the 0-10 ratings with Wilcoxon signed-rank tests, and
+p-values are Holm-corrected over the six workflow pairs of each measure. Differences are the first
+named workflow minus its comparator (pp for strict accuracy; rating points for quality). Prints LaTeX rows.
 Usage: python scripts/supplement_tables.py
 """
 import glob

@@ -1175,7 +1175,7 @@ def main():
         (r"Trajectory pass (\%)", cells("S2_Pass"))])
     write_table("tab_hypothesis.tex", [
         (r"Hypothesis score (\%)", cells("S3_Score")), ci_row("S3_Score"),
-        (r"Step credit (\%)", cells("S3_Step")),
+        (r"Answer accuracy (\%)", cells("S3_Step")),
         (r"Evidence-relation accuracy (\%)", cells("S3_Rel")),
         (r"State-tracking accuracy (\%)", cells("S3_State")),
         (r"Decision accuracy (\%)", cells("S3_Dec")),
@@ -1187,7 +1187,7 @@ def main():
     # ---- pairwise table
     pw1 = pairwise(s1, n_boot=args.boot)
     P = [r"\begin{tabular}{@{}l@{\hspace{1.2em}}rcrc@{\hspace{1.6em}}rc@{\hspace{1.6em}}c@{}}", r"\toprule",
-         r"& \multicolumn{4}{c}{\textbf{Credit, all settings}} & \multicolumn{2}{c}{\textbf{Credit, single-turn}} & \textbf{Strict} \\",
+         r"& \multicolumn{4}{c}{\textbf{Accuracy, all settings}} & \multicolumn{2}{c}{\textbf{Independent questions}} & \textbf{Strict} \\",
          r"\cmidrule(lr){2-5}\cmidrule(lr){6-7}\cmidrule(l){8-8}",
          r"\textbf{Comparison} & \textbf{$\Delta$ (pp)} & \textbf{95\% CI} & \textbf{$r_{rb}$} & \textbf{$p_{\mathrm{Holm}}$} & \textbf{$\Delta$ (pp)} & \textbf{$p_{\mathrm{Holm}}$} & \textbf{$p_{\mathrm{Holm}}$} \\",
          r"\midrule"]

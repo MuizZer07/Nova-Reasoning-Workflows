@@ -109,8 +109,20 @@ python -m venv .venv && .venv/bin/pip install -r scripts/requirements.txt
 ```
 
 Figures are written to `figures/`. Every number the scripts compute is written as LaTeX
-macros and tables to `$NOVA_NUMBERS_DIR` (a temporary directory if unset). All scores are
-macro-averaged over the six datasets.
+macros and tables to `$NOVA_NUMBERS_DIR` (a temporary directory if unset). Performance
+scores are macro-averaged over the six datasets; the grader-agreement and grading-path
+analyses in Tables S11-S12 pool answers across datasets.
+
+**Accuracy** is mean reference credit (1 for a full match, 0.5 for a partial match,
+and 0 otherwise), expressed as a percentage. **Strict accuracy** counts full matches
+only. **Answer-quality ratings** separately assess correctness, completeness, and
+reasoning on 0-10 scales, with or without the reference annotations. The **hypothesis
+score** averages answer accuracy across the 300 evidence steps and 30 final assessments,
+hypothesis-state accuracy, and final-decision accuracy. The **suite score** averages
+independent-question accuracy, conversation-turn accuracy, and the hypothesis score.
+Neither composite includes the answer-quality ratings; evidence-relation accuracy
+and calibration are reported separately. Grader agreement uses linearly weighted
+Cohen's kappa, as specified in the paper.
 
 | Paper | Script | Output |
 |---|---|---|
@@ -132,9 +144,9 @@ and scripts in this repository:
 | Tables S2-S4 | One benchmark item per setting with its reference annotations (NOVA-S1-D1-033, NOVA-S2-D1-T03, NOVA-S3-D1-H02), with the states declared by the systems | `data/benchmark/`, `data/results/nova_run/`, `data/results/gpt6_run/` |
 | Table S5 | Qualifying evidence read as contradicting (NOVA-S3-D2-H03-S04, NOVA-S3-D4-H03-S03) | `data/benchmark/S3_hypothesis_evaluation.xlsx`, `data/results/` |
 | Fig. S1 | Excerpt of the shared Nova system prompt | `prompts/nova_*/_system_prompt_build.md` |
-| Table S6 | Paired workflow comparisons in credit | `scripts/nova_results.py` (`tab_pairwise.tex`) |
-| Table S7 | Paired comparisons in strict accuracy and reference-based grades | `scripts/supplement_tables.py` |
-| Table S8 | Credit by item type with Friedman tests | `scripts/main_patterns.py` (`tab_main_patterns.tex`) |
+| Table S6 | Paired workflow comparisons in accuracy | `scripts/nova_results.py` (`tab_pairwise.tex`) |
+| Table S7 | Paired comparisons in strict accuracy and reference-based answer-quality ratings | `scripts/supplement_tables.py` |
+| Table S8 | Accuracy by item type with Friedman tests | `scripts/main_patterns.py` (`tab_main_patterns.tex`) |
 | Fig. S2 | Credit by Reasoning Requirement Level and difficulty | `scripts/nova_results.py` (`figures/fig_rrl.pdf`) |
 | Table S9, Fig. S3 | Item-level agreement between Nova-Thinking and GPT-6 Medium | `scripts/gpt_comparison.py` (`tab_agree.tex`, `figures/fig_agree.pdf`) |
 | Fig. S4 | Conversations: credit by turn position, fact preservation, revision | `scripts/nova_results.py` (`figures/fig_interactive.pdf`) |
@@ -144,7 +156,12 @@ and scripts in this repository:
 | Table S14 | Expert fact-check of 40 answers by workflow and issue type | `scripts/expert_fact_check.py` (`data/expert_review/results/`) |
 | Fig. S7 | Worked example (NOVA-S1-D1-033 on the robustness subset) | `data/results/robustness_subset/D1/15%_glm_original.xlsx` |
 
-Tables are written to `$NOVA_NUMBERS_DIR` by the listed scripts.
+Tables are written to `$NOVA_NUMBERS_DIR` by the listed scripts. In Tables S6-S7,
+differences are the first named workflow minus its comparator (for example,
+Nova-Thinking minus Nova-Instant): percentage points for accuracy and rating points
+for answer quality. Hypothesis answer accuracy in Tables S8 and S10 includes the
+30 final assessments as well as the 300 evidence steps. Table S14 supports the
+expert review in Section 4.5.
 
 ## Reproducing the GPT-6 run and the regrading check
 
