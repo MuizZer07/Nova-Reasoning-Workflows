@@ -3,7 +3,7 @@
 Benchmark, results, and analysis code for the paper
 
 > **Evaluating Reasoning Strategies for Interactive Transcriptomic Interpretation**
-> Muiz Khan, Alan Carbajo, Cristiana Iosef, Suzan Arslanturk, and Sorin Draghici (2026, under review).
+> Muiz Khan, Cristiana Iosef, Suzan Arslanturk, and Sorin Draghici (2026, under review).
 
 The study compares four reasoning workflows of *Nova* (a single-pass workflow, a fixed
 multi-stage workflow, a workflow that dynamically decomposes a query across parallel
@@ -213,7 +213,7 @@ figures, prompts, and documentation (`data/`, `figures/`, `prompts/`, `docs/`) a
 ```bibtex
 @unpublished{khan2026nova,
   title  = {Evaluating Reasoning Strategies for Interactive Transcriptomic Interpretation},
-  author = {Khan, Muiz and Carbajo, Alan and Iosef, Cristiana and Arslanturk, Suzan and Draghici, Sorin},
+  author = {Khan, Muiz and Iosef, Cristiana and Arslanturk, Suzan and Draghici, Sorin},
   year   = {2026},
   note   = {Under review}
 }
